@@ -88,3 +88,103 @@ app.listen(port, () => {
 
 Download .env and make a file .env and put your sensitive data and don't push in deployment
 http in node: 
+
+
+# Day 3:  Express js Crash Course
+
+ Acha ji Backend ke lie hame samajah tu agya he keh core http nodejs men aur bun se server banna scalable nhi and not a good pracitce.
+
+ That's there are several libraries like : 
+  
+  1: Express.js
+  
+  2: Hono
+
+  #: Elysia
+
+  Ham abhi shuru men Express.js use karenge ge.
+
+  Database men ham MongoDb use  kar rhe hen but ham directly mongodb code nhi likhenge uske lie ham ORM use karnege ge. ORM means  Object Relational Mapping.
+  There are many ORM,s like: 
+  
+  1: Mongoose
+
+  2: Prisma
+
+  3: Drizzle
+
+  We are using mongoose for mongodb, we can use drizzle and prisma for postgreSQL.
+
+
+
+  All the web request will come to express application that runs in the node environment, in that we will be writing all the auth and business logic.
+
+  Acha ji ap jab express server men kuch change karen tu apku server restart karna parta usse bachne ke lie pa nodemon use kar sakte hen :
+  ```
+npm i -D nodemon
+  ```
+
+  -D means dev Dev Dependency, it does not get pushed to production cos why would we want to increase the laod we only need it in development.
+  
+  You can make a run command called dev which represent nodemon index.js
+
+  ## Basic CRUD application 
+
+  ```
+  app.use(express.json())
+  
+  let teaData = []
+  let nextId = 1
+ // Add a new Tea
+   app.post("/teas", (req,res) => {
+   const {name,price} = req.body;
+
+   const newTea = {id: nextId++, name,price}
+   teaData.push(newTea)
+   res.status(201).send(newTea)
+   })
+// Get al tea
+   app.get("/teas", (req,res) => {
+    res.status(200).send(teaData)
+   })
+// Geta tea with id
+   app.get("/teas/:id", (req, res) => {
+  const tea =  teaData.find(t => t.id = parseInt(req.params.id))
+
+  if(!tea) {
+    return res.status(404).send('Tea Not Found)
+  }
+
+  res.status(200).send(tea)
+   })
+
+  //Update Tea
+
+  app.put("/teas/:id", (req,res) => {
+  const teaId =  req.params.id
+   const tea =  teaData.find(t => t.id = parseInt(req.params.id))
+
+    if(!tea) {
+    return res.status(404).send('Tea Not Found)
+  }
+
+  const {name, price} = req.body
+  tea.name = name
+  tea.price = price
+  res.send(200).send(tea)
+  } )
+
+
+ // Delete Tea
+
+ app.delete("/teas/:id", (req,res) => {
+ const index = teaData.findIndex(t => t.id === ParseInt(req.params.id))
+
+ if(index === -1){
+  return res.send(404).send("tea not found)
+ }
+
+ teaData.splice(index, 1)
+  return res.send(204).send("deleted")
+ }) 
+  ```
