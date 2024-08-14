@@ -188,3 +188,119 @@ npm i -D nodemon
   return res.send(204).send("deleted")
  }) 
   ```
+
+
+  # Data Modelling with mognoose
+
+  Always when starting to make backend, first create a data model, what fields you need how they are related etc.
+
+  also first start with a page that submits data(Registeration) rather than a page that validates it(login)
+
+  Install npm i mongoose
+
+  ### Creating Models: 
+   
+   Lets's create a model folder and in that folder name "todos" and we will define our characters in it.
+
+   First charatcer can be user named user.models.js(it is a simple js file but it is a standard industry pracitce). 
+
+   And a todo.models.js
+
+   and another sub_todo.models.js.
+
+  Step 1:
+   
+   Import mongoose
+
+   Step 2: 
+
+   Mongoose help create schema.
+
+   const userSchema = new mongoose.Schema(
+    {
+      username: {
+         type: String,
+        required: true,
+        unique :true,
+        lowercase: true
+         },
+      email: String,
+      isActive: Boolean
+    },
+     email : {
+      type: String,
+       required: true,
+       unique: true,
+       lowercase: true
+    },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+    },{
+      timestamps: true,
+    }
+    )
+
+   Step 3: 
+
+   export const User = mongoose.model("User", userSchema)
+
+   
+  ## In todo model(pracitce )
+
+  ```
+  import mongoose from "mongoose"
+
+  const todoSchema = new mongoose.Schema({
+    content: {
+      type: String,
+      required :true,
+    },
+
+    complete : {
+      type : Boolean,
+      default : false,
+    },
+    createdBy : {
+       type : mongoose.Schema.Types.ObjectId,
+       ref: "User",
+    },
+
+    subTodos :  [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "SubTodo"
+      }
+    ] // Array of Sub Todos
+  }, {timestamps: ture})
+
+ export const Todo = mongoose.model("Todo", todoSchema)
+
+  ```
+
+
+  ## In sub todos 
+
+  ```
+ import mongoose from "mongoose"
+
+ const subTodoSchema = new mongoose.Schema({
+  content: {
+    type: String,
+    required: true,
+  },
+  complete :{
+    type: Boolean,
+    default :false,
+  },
+
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
+
+ }, {timestamps: true})
+
+ export const SubTodo = mongoose.model("SubTodo", subTodoSchema)
+
+  ```
