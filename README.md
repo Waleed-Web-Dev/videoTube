@@ -312,3 +312,9 @@ npm i -D nodemon
  VideoTube model link : https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj
  
   
+Git doesnot track folders so we create a .gitkeep file in the empty folder to be tracked.
+
+Also .gitignore file to keep files that have sensitive data.
+
+
+
