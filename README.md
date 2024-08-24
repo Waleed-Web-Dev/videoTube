@@ -331,16 +331,52 @@ In env folder create PORT value 8000, MONGODB_URI(DON'T add Ending Slash).
 In consatnts export DB_NAME: 
 
 ```
- export const DB_NAME = "videotube"
+export const DB_NAME = "videotube"
 ```
-
-In src folder in db folder .
 
 Install dotenv, mongoose, express.
 
 Always wrap database call in a try catch or use promise for error handling.
 
 Database is always in another continent so it takes time so use async await.
+
+
+In src folder in db folder create a index.js file: 
+
+```
+import mongoose from "mongoose"
+import {DB_NAME} from "../constants"
+
+const connectDB = async () => {
+  try{
+  const connectInstance = await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}')
+    console.log(`MongoDB Connected: DB HOST: ${connectInstance.connection.host}`)
+  
+
+  }catch(err) {
+    console.log("connection error", err);
+    process.exit(1)
+  }
+}
+
+export default connectDB
+```
+
+
+In main index.js: 
+
+```
+// require('dotenv').config({path: './env'}) 
+import dotenv from "dotenv"
+import connectDB from "./db/index.js"
+dotenv.config({
+  path: "./env"
+})
+
+
+connectDB()
+```
+As import is a new feature and experimental inn package.json, in the dev script add -r dotenv/config --experimental-json-modules
 
 
 
