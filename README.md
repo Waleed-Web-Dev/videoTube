@@ -334,4 +334,13 @@ In consatnts export DB_NAME:
  export const DB_NAME = "videotube"
 ```
 
-In src folder in db folder 
+In src folder in db folder .
+
+Install dotenv, mongoose, express.
+
+Always wrap database call in a try catch or use promise for error handling.
+
+Database is always in another continent so it takes time so use async await.
+
+
+
