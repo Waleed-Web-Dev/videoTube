@@ -306,9 +306,6 @@ npm i -D nodemon
   ```
 
 
-
-# How to setup a professional backend project
-
  VideoTube model link : https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj
  
   
@@ -317,4 +314,24 @@ Git doesnot track folders so we create a .gitkeep file in the empty folder to be
 Also .gitignore file to keep files that have sensitive data.
 
 
+# How to connect Database in MERN with debugging:
 
+ Install MongoDb(optional)
+
+ Open MongoDB Atlas.
+
+ Create a new project.
+
+ Create a cluster or deployment.
+
+ * Add 0.0.0.0/0 in IP address.
+
+In env folder create PORT value 8000, MONGODB_URI(DON'T add Ending Slash).
+
+In consatnts export DB_NAME: 
+
+```
+ export const DB_NAME = "videotube"
+```
+
+In src folder in db folder 
