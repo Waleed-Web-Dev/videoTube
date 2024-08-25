@@ -378,7 +378,7 @@ connectDB()
 ```
 As import is a new feature and experimental inn package.json, in the dev script add -r dotenv/config --experimental-json-modules
 
-.use moslty use tak karenge jab middleware yah kui confoguration karni he
+.use moslty use tak karenge jab middleware yah kui configuration karni he
 
 
 When using pre hook (save) in mongoose, don't use arrow function because arrow function doesnot have this access..Ref : user model
@@ -395,3 +395,93 @@ userSchema.pre("save",async function(next) {
   next()
 })
 ```
+
+# HTTP 
+
+ - Hyper Text Transfer Protocol
+
+ ### HTTP Headers: 
+
+ - Meta Data : Key-value pair sent along with request & response
+
+ Usage - caching, authentication, manage state etc.....
+
+   1. Request Headers - from client
+   2. Response Headers - from Server
+   3. Representation Headers - encoding/compression
+   4. Payload Headers - data
+     
+
+  #### Most Common Headers
+  - Accept  : Application/json
+  - User-agent
+  - Authorization
+  - Content-Type
+  - Cookie
+  - Cache - Control
+
+#### CORS
+Acces-Control-Allow-Origin
+
+Access-Control-Allow-Credentials
+
+Acess-Control-Allow-Method
+
+#### Security
+Cross-Origin-Embedder-Policy
+
+Cross-Origin-Opener-Policy
+
+Content-Security-Policy
+
+X-XSS-Protection
+
+
+### HTTP Methods
+
+Basic set of operations that can be used to interact with server
+
+- Get : Retrieve a response
+- Head : No message body(response headers only)
+- Options : What operations are available
+- Trace : Loopback Test(get same data)
+- Delete : Remove a resource
+- Put  : Replace a resource
+- Post : Interact with resource (mostly add)
+- Patch : change part of a resource
+ 
+
+## HTTP Status Code
+
+- 1xx - Informational
+- 2xx - Success
+- 3xx - Redirection
+- 4xx - Client error
+- 5xx - Server error
+
+
+100 - Continue
+
+102- Processing
+
+200 - OK
+
+201 - Created
+
+202 - Accepted 
+
+307 - Temporary Redirect
+
+308 -  Permanent Redirect 
+
+400 - Bad Request
+
+401 - Unauthorized
+
+402 - Payment Required
+
+404 - Not Found
+
+500 - Internal Server Error
+
+504 - Gateway Timeout
