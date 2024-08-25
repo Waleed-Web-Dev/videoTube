@@ -379,3 +379,19 @@ connectDB()
 As import is a new feature and experimental inn package.json, in the dev script add -r dotenv/config --experimental-json-modules
 
 .use moslty use tak karenge jab middleware yah kui confoguration karni he
+
+
+When using pre hook (save) in mongoose, don't use arrow function because arrow function doesnot have this access..Ref : user model
+
+When using the pre hook, it will encrypt the password everytime when anything is saved or changed so we use isModified method and in it pass the name of the field we want to watch in a STRING.
+
+```
+
+userSchema.pre("save",async function(next) {
+ if(!this.isModified("password")) return next();
+ 
+  this.password = bcrypt.hash(this.password, 10)
+
+  next()
+})
+```
