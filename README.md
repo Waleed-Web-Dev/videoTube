@@ -378,5 +378,4 @@ connectDB()
 ```
 As import is a new feature and experimental inn package.json, in the dev script add -r dotenv/config --experimental-json-modules
 
-
-
+.use moslty use tak karenge jab middleware yah kui confoguration karni he
