@@ -485,3 +485,15 @@ Basic set of operations that can be used to interact with server
 500 - Internal Server Error
 
 504 - Gateway Timeout
+
+# Guide for Router and Controller
+
+Following is How you create routes: 
+
+```
+import {Router} from "express"
+
+const router = Router()
+
+export default router
+```
