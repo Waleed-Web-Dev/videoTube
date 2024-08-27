@@ -1,5 +1,3 @@
-https://miro.com/welcomeonboard/UFZXM3dURlk4Q3RPcTlBOHlFY0dOYkNET3E1c2F1bjB5Z0JyVnl3RGprZVAyUGVhSFJHdnBwb3hEYXhaRGYxNHwzNDU4NzY0NTk4MDQwODU3NTQxfDI=?share_link_id=378471124904
-
 # Backend-git
 Backend Course with Hitesh Chaudhry
 
